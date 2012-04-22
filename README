@@ -1,0 +1,3 @@
+This is a simple caching class based on php-apc which can take even more than
+2000 requests per second. It has a simple mutex implementation to avoid unnnecessary php executions.
+More in benchmark.txt
