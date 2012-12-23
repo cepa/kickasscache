@@ -3,15 +3,14 @@
 /**
  * =============================================================================
  * @file        KickAssCacheApc.php
- * @author      Lukasz Cepowski <lukasz[at]cepowski.pl>
- * @package     KickAssCache
- * @version	    $Id: KickAssCacheApc.php 4 2011-06-08 20:22:25Z cepa $
- * @license     WhiskeyWare
+ * @author     Lukasz Cepowski <lukasz@cepowski.com>
+ * @package    KickAssCache
+ * @license    WhiskeyWare
  * 
- * @copyright   Ass kicking cache frontend for APC.
- *              Copyright (C) 2011 Ognisco
+ * @copyright  Ass kicking cache frontend for APC.
+ *              Copyright (C) 2011-2012 HellWorx Software
  *              All rights reserved.
- *              www.ognisco.com
+ *              www.hellworx.com
  * =============================================================================
  */
 
@@ -146,6 +145,8 @@ class KickAssCacheApc
         ob_start(array($this, '_flush'));
         ob_implicit_flush(false);
         array_push($this->_stack, $cacheId);
+        
+        return $this;
     }
     
     /**
@@ -191,6 +192,18 @@ class KickAssCacheApc
         ob_start(array($this, '_flushPage'));
         ob_implicit_flush(false);
         array_push($this->_stack, $cacheId);
+        
+        return $this;
+    }
+    
+    /**
+     * Finish capturing and flush buffer to the output.
+     * @return KickAssCacheApc
+     */
+    public function captureEnd()
+    {
+        ob_end_flush();
+        return $this;
     }
     
     /**
