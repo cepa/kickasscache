@@ -172,17 +172,19 @@ class KickAssCacheApc
      * the first one should lock a mutex and the other will wait up to 5 seconds
      * before unlock or die.
      */
-    public function capturePage()
+    public function capturePage($cacheId = null)
     {
-        $cacheId = md5(serialize(array(
-            $_SERVER['REQUEST_URI'],
-            $_GET,
-            $_POST
-        )));
+        if (!isset($cacheId)) {
+            $cacheId = md5(serialize(array(
+                $_SERVER['REQUEST_URI'],
+                $_GET,
+                $_POST
+            )));
+        }
         
-        if ($this->_randomFactor > 0)
+        if ($this->_randomFactor > 0) {
             $cacheId .= (rand() % $this->_randomFactor);
-        
+        }
         
         $this->_loadPageCacheAndExit($cacheId);
         $this->_waitForLockOrDie($cacheId);
