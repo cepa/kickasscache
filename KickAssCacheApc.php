@@ -59,6 +59,7 @@ class KickAssCacheApc
     public function setTtl($ttl) 
     {
         $this->_ttl = $ttl;
+        return $this;
     }
     
     /**
@@ -78,6 +79,7 @@ class KickAssCacheApc
     public function setRandomFactor($randomFactor)
     {
         $this->_randomFactor = $randomFactor;
+        return $this;
     }
     
     /**

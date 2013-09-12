@@ -1,7 +1,7 @@
 # KickAssCacheApc
 
 ### Da fuq is this?
-This is a simple caching class based on php-apc that allows your php application boot performance many times. 
+This is a simple caching class based on php-apc that allows your php application boost performance many times. 
 It has a builtin simple mutex implementation to avoid race condition issues with multiple concurrent request, that could possibly overload your server.
 ***
 
@@ -32,5 +32,5 @@ KickAssCacheApc was testes against following versions of php:
 ***
 
 ## Benchmark
-More in benchmark.txt
+More in benchmark.txt, more than **2000 requests per second**!
 ***
